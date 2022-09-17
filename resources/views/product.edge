@@ -1,0 +1,47 @@
+@layout('layout')
+            @section('body')
+
+                <!-- Basic Tables start -->
+                <section class="section">
+                    <div class="row" id="basic-table">
+                        <div class="col-12 ">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Product</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">                                        
+                                        <!-- Table with outer spacing -->
+                                        <div class="table-responsive">
+                                            <table class="table table-lg">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Name</th>
+                                                        <th>Detail</th>
+                                                        <th>Action</th>                                                        
+                                                    </tr>
+                                                </thead>
+                                                @each(product in products) 
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{product.id}}</td>
+                                                        <td class="text-bold-500">{{product.name}}</td>
+                                                        <td>{{product.detail}}</td>                                                        
+                                                        <td> <a type="button" class="btn btn-primary"  href="{{route('product.edit',{id: product.id})}}" >Edit</a></td>
+                                                        <td> <a type="button" class="btn btn-primary"  href="{{route('product.delete',{id: product.id})}}" >Delete</a></td>
+                                                    </tr>                                                    
+                                                </tbody>
+                                                @endeach
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                       
+                            </div>
+                        </div>                        
+                    </div>
+                    <a class="btn btn-primary" href="{{ route('product.create') }}">Add</a>&nbsp;   
+                </section>
+                <!-- Basic Tables end --> 
+            @endsection       
+            

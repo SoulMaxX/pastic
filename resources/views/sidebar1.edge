@@ -1,0 +1,53 @@
+<div id="sidebar" class="active">
+    <div class="sidebar-wrapper active">
+        <div class="sidebar-header">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <a href="{{ route('product') }}">Plastic Bag Factory Database System</a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <ul class="menu">
+                <li class="sidebar-title">Menu</li>
+
+                <li class="sidebar-item  ">
+                    <a href="{{ route('product') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Product</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item ">
+                    <a href="{{ route('warehouse') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Warehouse</span>
+                    </a>
+                </li>
+                        
+            </ul>
+        </div>
+
+        <div class="right menu">
+            @if(auth)
+              <div class="ui dropdown item">
+                  User : &nbsp;&nbsp; {{ auth.user.username }}
+                  <i class=" dropdown icon"></i>
+                  <div class="menu">
+                        <div class="item"><a style="color: black;" href="{{route('users.logout')}}">Logout</a></div>
+                  </div>
+              </div>
+              @else
+              <div class="item">
+                <a href="{{route('register')}}">Register</a>
+              </div>
+              @endif
+        </div>
+
+
+
+
+        <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+    </div>
+</div>

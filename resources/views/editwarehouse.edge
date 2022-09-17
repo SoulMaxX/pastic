@@ -1,0 +1,55 @@
+@layout('layout')
+            @section('body')
+
+                <!-- Basic Horizontal form layout section start -->
+                <section class="input-group-select">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Warehouse</h4>
+                                </div>
+                                <div class="card-content">
+                                    <form class="form form-horizontal" action="{{ route('warehouse.update',{ id: warehouse.id }) }}" method="post">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-4">
+                                                    <h6>Product</h6>
+                                                    
+                                                    <div class="input-group mb-4">                                                    
+                                                        <select class="form-select" id="productId" name="productId">
+                                                            @each(product in products)
+                                                            @if(warehouse.productId == product.id )
+                                                            <option value="{{product.id}}" selected >{{product.id}}-{{product.name}}</option>
+                                                            @endif                           
+                                                            <option value="{{product.id}}">{{product.id}}-{{product.name}}</option>                            
+                                                            @endeach
+                                                        </select>
+                                                    </div>
+                                                
+                                                    <div class="col-md-4">
+                                                        <label>Quantity</label>
+                                                    </div>
+                                                    <div class="col-md-12 form-group">
+                                                        <input type="text" class="form-control" name="quantity" value="{{ warehouse.quantity }}" > 
+                                                        @if(flashMessages.has('errors.quantity'))
+                                                        <div class="ui negative message">{{ flashMessages.get('errors.quantity')}}</div>
+                                                    @endif                                                       
+                                                    </div>
+                                                    <div class="col-sm-12 d-flex justify-content-end">
+                                                        <button type="submit"
+                                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                                        <button type="reset"
+                                                            class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>   
+                <!-- // Basic multiple Column Form section end -->
+            @endsection 
